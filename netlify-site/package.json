@@ -1,0 +1,1 @@
+{"name":"platinum-portal-site","private":true,"type":"module","dependencies":{"@netlify/database":"^1.1.0","@netlify/blobs":"^10.0.0"}}

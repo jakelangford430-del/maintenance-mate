@@ -1,0 +1,36 @@
+import sys
+from playwright.sync_api import sync_playwright
+tag=sys.argv[1]; B="http://127.0.0.1:8765/"
+with sync_playwright() as p:
+    b=p.chromium.launch(channel="chrome"); dev=p.devices['iPhone 13']
+    ctx=b.new_context(**dev); pg=ctx.new_page(); errs=[]; pg.on("pageerror",lambda e:errs.append(str(e)))
+    def shot(n): pg.screenshot(path=f"screenshots/ux/{tag}-{n}.png")
+    pg.goto(B+"comms.html"); pg.wait_for_timeout(600)
+    pg.tap(".q li:nth-child(3)"); pg.wait_for_timeout(400); shot("comms-after-tap")
+    print("comms letter in view:", pg.evaluate("(()=>{const ls=[...document.querySelectorAll('.letter')].filter(l=>{const r=l.getBoundingClientRect();return r.top<innerHeight&&r.bottom>0&&r.width>0});return ls.length>0})()"))
+    print("comms sheet approve in view:", pg.evaluate("(()=>{const a=document.querySelector('.modal.open [data-approve]');if(!a)return null;const r=a.getBoundingClientRect();return r.bottom<=innerHeight&&r.top>=0})()"))
+    cl=pg.query_selector(".modal.open [data-close]")
+    if cl: cl.tap(); pg.wait_for_timeout(300); shot("comms-after-close")
+    pg.tap("[data-t='Tenants']"); pg.wait_for_timeout(300); pg.tap(".q li:nth-child(2)"); pg.wait_for_timeout(300); shot("comms-tenant")
+    n=pg.query_selector(".modal.open [data-next]")
+    if n: n.tap(); pg.wait_for_timeout(300); shot("comms-skip-next")
+    e=pg.query_selector(".modal.open [data-edit]")
+    if e: e.tap(); pg.wait_for_timeout(200); print("edit mode:", pg.evaluate("document.querySelector('.modal.open .letter').isContentEditable")); shot("comms-edit")
+    pg.keyboard.press("Escape"); pg.wait_for_timeout(200)
+    pg.goto(B+"pm.html"); pg.wait_for_timeout(600)
+    pg.tap(".hero .btn-primary"); pg.wait_for_timeout(500); shot("pm-clear-urgent")
+    print("pm urgent heading in view:", pg.evaluate("(()=>{const r=document.querySelector('#urgent').getBoundingClientRect();return r.top>=0&&r.top<innerHeight})()"))
+    row=pg.query_selector("#urgent .row.sw"); bb=row.bounding_box(); y=bb['y']+bb['height']/2
+    pg.evaluate("""([y])=>{const r=document.querySelector('#urgent .row.sw');const t=(type,x)=>r.dispatchEvent(new TouchEvent(type,{bubbles:true,touches:type==='touchend'?[]:[new Touch({identifier:1,target:r,clientX:x,clientY:y})]}));t('touchstart',330);t('touchmove',200);t('touchmove',120);t('touchend',120)}""",[y])
+    pg.wait_for_timeout(400); shot("pm-swiped")
+    btn=pg.query_selector("#urgent .row.sw .sw-under .btn-primary")
+    print("swipe action visible:", btn.is_visible() if btn else None)
+    if btn: btn.tap(); pg.wait_for_timeout(400); shot("pm-draft-open")
+    print("modal approve in view:", pg.evaluate("(()=>{const a=document.querySelector('.modal.open [data-approve]');if(!a)return null;const r=a.getBoundingClientRect();return r.bottom<=innerHeight&&r.top>=0})()"))
+    c=pg.query_selector(".modal.open [data-close]")
+    if c: c.tap(); pg.wait_for_timeout(300); shot("pm-draft-closed")
+    pg.tap(".burger"); pg.wait_for_timeout(300); shot("pm-menu"); pg.tap(".dr-x"); pg.wait_for_timeout(200)
+    pg.goto(B+"director.html"); pg.wait_for_timeout(600); shot("director-top")
+    pg.tap(".burger"); pg.wait_for_timeout(300); shot("director-menu")
+    print("errors",errs)
+    b.close()

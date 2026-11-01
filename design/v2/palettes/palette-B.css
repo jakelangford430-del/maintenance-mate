@@ -1,0 +1,5 @@
+/* Palette B · Charcoal & Bronze — load after app.css */
+:root{--navy-950:#171614;--navy-900:#24221F;--navy-700:#3A3631;--navy-500:#5E5850;--platinum:#E8E2D8;
+--ivory:#F3EFE8;--bg:#F3EFE8;--paper:#FBF9F5;--surface:#FBF9F5c7;--ink:#1E1C19;--text:#1E1C19;--silver-700:#5F5950;--muted:#5F5950;
+--champagne:#B08457;--champagne-ink:#7A5432;--champagne-bg:#F1E6D8;--glow:#E8DCCB;--bar-bg:#F3EFE8b3;--tabbar-bg:#24221Fe0;
+--grade-a:#2F6B50;--grade-b:#5E5850;--grade-c:#7A5B0C;--grade-d:#9E2626}

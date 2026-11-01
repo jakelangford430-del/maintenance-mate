@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+secrets/
+node_modules/
+.netlify/
+__pycache__/
+*.pyc
+# Data (never commit real suppliers, jobs, tenants or staff)
+app/data/
+app/outreach/
+app/screenshots/
+exports/
+matt-batches/
+netlify-site/public/
+*.csv
+*.xlsx

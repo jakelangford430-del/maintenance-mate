@@ -1,0 +1,5 @@
+/* Palette D · Midnight & Rose Gold — load after app.css */
+:root{--navy-950:#0D0E18;--navy-900:#171927;--navy-700:#282C42;--navy-500:#4C5170;--platinum:#ECE6EA;
+--ivory:#F7F3F1;--bg:#F7F3F1;--paper:#FFFCFB;--surface:#FFFCFBc7;--ink:#1A1B26;--text:#1A1B26;--silver-700:#5E5E6D;--muted:#5E5E6D;
+--champagne:#D4A491;--champagne-ink:#8A5240;--champagne-bg:#F6E6E0;--glow:#F0DFD8;--bar-bg:#F7F3F1b3;--tabbar-bg:#171927e0;
+--grade-a:#2F6B50;--grade-b:#4C5170;--grade-c:#7A5B0C;--grade-d:#9E2626}

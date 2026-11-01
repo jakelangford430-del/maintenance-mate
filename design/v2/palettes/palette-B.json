@@ -1,0 +1,68 @@
+{
+  "name": "Charcoal & Bronze",
+  "description": "Charcoal and warm stone with bronze: gallery-quiet, architectural.",
+  "page": "#F3EFE8",
+  "surface": "#FBF9F5",
+  "text": "#1E1C19",
+  "text-muted": "#5F5950",
+  "primary": "#24221F",
+  "primary-deep": "#171614",
+  "primary-hover": "#3A3631",
+  "primary-soft": "#5E5850",
+  "on-primary": "#FFFFFF",
+  "on-primary-muted": "#E8E2D8",
+  "accent": "#B08457",
+  "accent-text": "#7A5432",
+  "accent-field": "#F1E6D8",
+  "status": {
+    "safe": {
+      "fg": "#2F6B50",
+      "bg": "#E6F0EA"
+    },
+    "watch": {
+      "fg": "#7A5B0C",
+      "bg": "#F6EED6"
+    },
+    "risk": {
+      "fg": "#A4481A",
+      "bg": "#F9E7DC"
+    },
+    "critical": {
+      "fg": "#9E2626",
+      "bg": "#F7E1E1"
+    }
+  },
+  "grade": {
+    "A": "#2F6B50",
+    "B": "#5E5850",
+    "C": "#7A5B0C",
+    "D": "#9E2626"
+  },
+  "contrast": {
+    "text/page": 14.83,
+    "text/surface": 16.17,
+    "muted/page": 6.04,
+    "muted/surface": 6.59,
+    "accent-text/page": 5.83,
+    "accent-text/field": 5.43,
+    "white/primary": 15.87,
+    "white/primary-hover": 11.99,
+    "platinum/primary-deep": 14.04,
+    "accent/primary-deep": 5.41,
+    "accent/primary": 4.75,
+    "primary/page": 13.84,
+    "grade-B/surface": 6.68,
+    "safe/page": 5.49,
+    "safe/tint": 5.39,
+    "safe/surface": 5.98,
+    "watch/page": 5.5,
+    "watch/tint": 5.44,
+    "watch/surface": 6.0,
+    "risk/page": 5.2,
+    "risk/tint": 4.97,
+    "risk/surface": 5.67,
+    "critical/page": 6.64,
+    "critical/tint": 6.09,
+    "critical/surface": 7.24
+  }
+}

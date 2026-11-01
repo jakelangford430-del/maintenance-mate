@@ -1,0 +1,11 @@
+[build]
+  publish = "public"
+# Every request (pages, assets, data) passes through the auth edge function.
+[[edge_functions]]
+  path = "/*"
+  function = "auth"
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "private, no-store"
+    X-Robots-Tag = "noindex, nofollow"

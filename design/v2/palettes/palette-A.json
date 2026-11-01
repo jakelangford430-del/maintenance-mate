@@ -1,0 +1,68 @@
+{
+  "name": "Navy & Champagne",
+  "description": "Current v2: deep navy, platinum and warm ivory with a champagne signature.",
+  "page": "#F8F5EF",
+  "surface": "#FFFDF9",
+  "text": "#161B24",
+  "text-muted": "#5B6370",
+  "primary": "#101D30",
+  "primary-deep": "#0B1626",
+  "primary-hover": "#22324B",
+  "primary-soft": "#4A5A74",
+  "on-primary": "#FFFFFF",
+  "on-primary-muted": "#E4E6EA",
+  "accent": "#C2A574",
+  "accent-text": "#7B6136",
+  "accent-field": "#F4ECDD",
+  "status": {
+    "safe": {
+      "fg": "#2F6B50",
+      "bg": "#E6F0EA"
+    },
+    "watch": {
+      "fg": "#7A5B0C",
+      "bg": "#F6EED6"
+    },
+    "risk": {
+      "fg": "#A4481A",
+      "bg": "#F9E7DC"
+    },
+    "critical": {
+      "fg": "#9E2626",
+      "bg": "#F7E1E1"
+    }
+  },
+  "grade": {
+    "A": "#2F6B50",
+    "B": "#4A5A74",
+    "C": "#7A5B0C",
+    "D": "#9E2626"
+  },
+  "contrast": {
+    "text/page": 15.87,
+    "text/surface": 16.99,
+    "muted/page": 5.57,
+    "muted/surface": 5.97,
+    "accent-text/page": 5.35,
+    "accent-text/field": 4.96,
+    "white/primary": 16.93,
+    "white/primary-hover": 12.92,
+    "platinum/primary-deep": 14.53,
+    "accent/primary-deep": 7.72,
+    "accent/primary": 7.2,
+    "primary/page": 15.56,
+    "grade-B/surface": 6.88,
+    "safe/page": 5.78,
+    "safe/tint": 5.39,
+    "safe/surface": 6.19,
+    "watch/page": 5.8,
+    "watch/tint": 5.44,
+    "watch/surface": 6.21,
+    "risk/page": 5.48,
+    "risk/tint": 4.97,
+    "risk/surface": 5.87,
+    "critical/page": 6.99,
+    "critical/tint": 6.09,
+    "critical/surface": 7.49
+  }
+}

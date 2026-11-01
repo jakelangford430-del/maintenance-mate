@@ -1,0 +1,23 @@
+/* Example Property Co — tokens FINAL · Palette D Midnight & Rose Gold */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap');
+:root{
+  --navy-950:#0D0E18;--navy-900:#171927;--navy-700:#282C42;--navy-500:#4C5170;--navy-50:#EEF1F5;
+  --platinum:#ECE6EA;--platinum-300:#C9CDD4;--silver-700:#5E5E6D;
+  --ivory:#F7F3F1;--ivory-2:#F2EDE4;--paper:#FFFCFB;--ink:#1A1B26;
+  --champagne:#D4A491;      /* hairlines, dots, focus — decorative or on navy */
+  --champagne-ink:#8A5240;  /* champagne for text on light (5.4:1 on ivory) */
+  --bg:var(--ivory);--surface:rgba(255,252,251,.78);--text:var(--ink);--muted:var(--silver-700);--champagne-bg:#F6E6E0;--glow:#F0DFD8;--bar-bg:rgba(247,243,241,.7);--tabbar-bg:rgba(23,25,39,.88);
+  --grade-a:#2F6B50;--grade-b:#4C5170;--grade-c:#7A5B0C;--grade-d:#9E2626;
+  --hair:rgba(22,27,36,.08);
+  --safe:#2F6B50;--watch:#7A5B0C;--risk:#A4481A;--critical:#9E2626;
+  --safe-bg:#E6F0EA;--watch-bg:#F6EED6;--risk-bg:#F9E7DC;--critical-bg:#F7E1E1;
+  --font-display:'Cormorant Garamond',Georgia,serif;--font-ui:'Inter',system-ui,sans-serif;
+  --fs-cap:.75rem;--fs-sm:.9375rem;--fs-md:1.0625rem;--fs-lg:1.25rem;--fs-h3:1.75rem;--fs-h2:2.5rem;--fs-h1:4rem;
+  --lh-display:1.08;--lh-body:1.65;
+  --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:40px;--s-7:64px;--s-8:96px;--s-9:128px;
+  --r-sm:8px;--r-md:14px;--r-lg:24px;--r-pill:999px;
+  --shadow-soft:0 1px 0 rgba(255,255,255,.7) inset,0 10px 30px -12px rgba(16,29,48,.14);
+  --shadow-lift:0 24px 60px -24px rgba(16,29,48,.28);
+  --blur:saturate(140%) blur(14px);
+  --ease:cubic-bezier(.2,.7,.2,1);
+}

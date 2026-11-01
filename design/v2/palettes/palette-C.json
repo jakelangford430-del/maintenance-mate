@@ -1,0 +1,68 @@
+{
+  "name": "Eucalyptus & Brass",
+  "description": "Deep forest/eucalyptus green with sand and brass: a nod to WA bush and coast.",
+  "page": "#F5F0E6",
+  "surface": "#FCFAF5",
+  "text": "#17201B",
+  "text-muted": "#55605A",
+  "primary": "#1F3A2E",
+  "primary-deep": "#132820",
+  "primary-hover": "#2E5243",
+  "primary-soft": "#4D6C5D",
+  "on-primary": "#FFFFFF",
+  "on-primary-muted": "#E3E8E0",
+  "accent": "#C2A05A",
+  "accent-text": "#735820",
+  "accent-field": "#F1E8D2",
+  "status": {
+    "safe": {
+      "fg": "#2F6B50",
+      "bg": "#E6F0EA"
+    },
+    "watch": {
+      "fg": "#7A5B0C",
+      "bg": "#F6EED6"
+    },
+    "risk": {
+      "fg": "#A4481A",
+      "bg": "#F9E7DC"
+    },
+    "critical": {
+      "fg": "#9E2626",
+      "bg": "#F7E1E1"
+    }
+  },
+  "grade": {
+    "A": "#2F6B50",
+    "B": "#4D6C5D",
+    "C": "#7A5B0C",
+    "D": "#9E2626"
+  },
+  "contrast": {
+    "text/page": 14.69,
+    "text/surface": 15.99,
+    "muted/page": 5.77,
+    "muted/surface": 6.28,
+    "accent-text/page": 5.88,
+    "accent-text/field": 5.47,
+    "white/primary": 12.33,
+    "white/primary-hover": 8.73,
+    "platinum/primary-deep": 12.49,
+    "accent/primary-deep": 6.26,
+    "accent/primary": 4.97,
+    "primary/page": 10.86,
+    "grade-B/surface": 5.56,
+    "safe/page": 5.54,
+    "safe/tint": 5.39,
+    "safe/surface": 6.03,
+    "watch/page": 5.55,
+    "watch/tint": 5.44,
+    "watch/surface": 6.05,
+    "risk/page": 5.25,
+    "risk/tint": 4.97,
+    "risk/surface": 5.72,
+    "critical/page": 6.7,
+    "critical/tint": 6.09,
+    "critical/surface": 7.3
+  }
+}

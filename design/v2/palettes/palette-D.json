@@ -1,0 +1,68 @@
+{
+  "name": "Midnight & Rose Gold",
+  "description": "Midnight ink with soft pearl and rose-gold: evening, boutique hotel.",
+  "page": "#F7F3F1",
+  "surface": "#FFFCFB",
+  "text": "#1A1B26",
+  "text-muted": "#5E5E6D",
+  "primary": "#171927",
+  "primary-deep": "#0D0E18",
+  "primary-hover": "#282C42",
+  "primary-soft": "#4C5170",
+  "on-primary": "#FFFFFF",
+  "on-primary-muted": "#ECE6EA",
+  "accent": "#D4A491",
+  "accent-text": "#8A5240",
+  "accent-field": "#F6E6E0",
+  "status": {
+    "safe": {
+      "fg": "#2F6B50",
+      "bg": "#E6F0EA"
+    },
+    "watch": {
+      "fg": "#7A5B0C",
+      "bg": "#F6EED6"
+    },
+    "risk": {
+      "fg": "#A4481A",
+      "bg": "#F9E7DC"
+    },
+    "critical": {
+      "fg": "#9E2626",
+      "bg": "#F7E1E1"
+    }
+  },
+  "grade": {
+    "A": "#2F6B50",
+    "B": "#4C5170",
+    "C": "#7A5B0C",
+    "D": "#9E2626"
+  },
+  "contrast": {
+    "text/page": 15.5,
+    "text/surface": 16.74,
+    "muted/page": 5.78,
+    "muted/surface": 6.24,
+    "accent-text/page": 5.67,
+    "accent-text/field": 5.15,
+    "white/primary": 17.43,
+    "white/primary-hover": 13.73,
+    "platinum/primary-deep": 15.62,
+    "accent/primary-deep": 8.71,
+    "accent/primary": 7.9,
+    "primary/page": 15.81,
+    "grade-B/surface": 7.57,
+    "safe/page": 5.7,
+    "safe/tint": 5.39,
+    "safe/surface": 6.16,
+    "watch/page": 5.72,
+    "watch/tint": 5.44,
+    "watch/surface": 6.18,
+    "risk/page": 5.41,
+    "risk/tint": 4.97,
+    "risk/surface": 5.84,
+    "critical/page": 6.9,
+    "critical/tint": 6.09,
+    "critical/surface": 7.46
+  }
+}

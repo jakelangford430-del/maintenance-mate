@@ -1,0 +1,5 @@
+/* Palette A · Navy & Champagne — load after app.css */
+:root{--navy-950:#0B1626;--navy-900:#101D30;--navy-700:#22324B;--navy-500:#4A5A74;--platinum:#E4E6EA;
+--ivory:#F8F5EF;--bg:#F8F5EF;--paper:#FFFDF9;--surface:#FFFDF9c7;--ink:#161B24;--text:#161B24;--silver-700:#5B6370;--muted:#5B6370;
+--champagne:#C2A574;--champagne-ink:#7B6136;--champagne-bg:#F4ECDD;--glow:#EFE7D8;--bar-bg:#F8F5EFb3;--tabbar-bg:#101D30e0;
+--grade-a:#2F6B50;--grade-b:#4A5A74;--grade-c:#7A5B0C;--grade-d:#9E2626}

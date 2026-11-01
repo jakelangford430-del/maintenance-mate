@@ -1,0 +1,5 @@
+/* Palette C · Eucalyptus & Brass — load after app.css */
+:root{--navy-950:#132820;--navy-900:#1F3A2E;--navy-700:#2E5243;--navy-500:#4D6C5D;--platinum:#E3E8E0;
+--ivory:#F5F0E6;--bg:#F5F0E6;--paper:#FCFAF5;--surface:#FCFAF5c7;--ink:#17201B;--text:#17201B;--silver-700:#55605A;--muted:#55605A;
+--champagne:#C2A05A;--champagne-ink:#735820;--champagne-bg:#F1E8D2;--glow:#EADFC6;--bar-bg:#F5F0E6b3;--tabbar-bg:#1F3A2Ee0;
+--grade-a:#2F6B50;--grade-b:#4D6C5D;--grade-c:#7A5B0C;--grade-d:#9E2626}

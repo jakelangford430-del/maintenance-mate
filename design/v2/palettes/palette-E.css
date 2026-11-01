@@ -1,0 +1,5 @@
+/* Palette E · Porcelain & Slate — load after app.css */
+:root{--navy-950:#2B3B4A;--navy-900:#36495C;--navy-700:#4A5F74;--navy-500:#5C6F82;--platinum:#EDF1F4;
+--ivory:#FAFBFB;--bg:#FAFBFB;--paper:#FFFFFF;--surface:#FFFFFFc7;--ink:#1C232B;--text:#1C232B;--silver-700:#56626F;--muted:#56626F;
+--champagne:#C3CCD5;--champagne-ink:#4B5866;--champagne-bg:#E9EEF2;--glow:#E6ECF1;--bar-bg:#FAFBFBb3;--tabbar-bg:#36495Ce0;
+--grade-a:#2F6B50;--grade-b:#5C6F82;--grade-c:#7A5B0C;--grade-d:#9E2626}

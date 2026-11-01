@@ -1,0 +1,68 @@
+{
+  "name": "Porcelain & Slate",
+  "description": "Light and airy: porcelain white, slate blue-grey and silver.",
+  "page": "#FAFBFB",
+  "surface": "#FFFFFF",
+  "text": "#1C232B",
+  "text-muted": "#56626F",
+  "primary": "#36495C",
+  "primary-deep": "#2B3B4A",
+  "primary-hover": "#4A5F74",
+  "primary-soft": "#5C6F82",
+  "on-primary": "#FFFFFF",
+  "on-primary-muted": "#EDF1F4",
+  "accent": "#C3CCD5",
+  "accent-text": "#4B5866",
+  "accent-field": "#E9EEF2",
+  "status": {
+    "safe": {
+      "fg": "#2F6B50",
+      "bg": "#E6F0EA"
+    },
+    "watch": {
+      "fg": "#7A5B0C",
+      "bg": "#F6EED6"
+    },
+    "risk": {
+      "fg": "#A4481A",
+      "bg": "#F9E7DC"
+    },
+    "critical": {
+      "fg": "#9E2626",
+      "bg": "#F7E1E1"
+    }
+  },
+  "grade": {
+    "A": "#2F6B50",
+    "B": "#5C6F82",
+    "C": "#7A5B0C",
+    "D": "#9E2626"
+  },
+  "contrast": {
+    "text/page": 15.29,
+    "text/surface": 15.85,
+    "muted/page": 6.01,
+    "muted/surface": 6.23,
+    "accent-text/page": 7.02,
+    "accent-text/field": 6.23,
+    "white/primary": 9.27,
+    "white/primary-hover": 6.6,
+    "platinum/primary-deep": 10.12,
+    "accent/primary-deep": 7.07,
+    "accent/primary": 5.7,
+    "primary/page": 8.95,
+    "grade-B/surface": 5.18,
+    "safe/page": 6.07,
+    "safe/tint": 5.39,
+    "safe/surface": 6.29,
+    "watch/page": 6.08,
+    "watch/tint": 5.44,
+    "watch/surface": 6.31,
+    "risk/page": 5.75,
+    "risk/tint": 4.97,
+    "risk/surface": 5.97,
+    "critical/page": 7.34,
+    "critical/tint": 6.09,
+    "critical/surface": 7.61
+  }
+}
