@@ -11,6 +11,7 @@ These are previews only. They use sample data and are not wired into the app.
 | mm-agent.html | Agent sign-in and portfolio overview | No |
 | mm-rules.html | Matt's rules: approve each step or autopilot | No |
 
+Built since: the job screen and job timeline (`app/job.html`), and the new tenant requests panel.
 Still to build as real screens: agent sign-in and portfolio overview, Matt's rules (needs storage for each agency's settings),
-the job screen, quote comparison, the supplier desk and the job timeline.
+quote comparison and the supplier desk.
 Price benchmarks and activity logs in the mock-ups are sample numbers, not real data.

@@ -7,7 +7,7 @@ import { makeSuppliers } from "../lib/suppliers_api.js";
 // PM sessions: cookie user "pm:<Name>", created by picking a name + the shared PM PIN (env PORTAL_PM_PIN_HASH, pbkdf2 hash only).
 const PM_NAMES = new Set(PEOPLE.map((p) => p.name));
 const pmName = (u) => (String(u).startsWith("pm:") ? String(u).slice(3) : null);
-const PM_PAGES = ["/pm.html", "/directory.html"]; // everything else (overview, backlog, properties, comms) is admin-only
+const PM_PAGES = ["/pm.html", "/directory.html", "/job.html"]; // everything else (overview, backlog, properties, comms) is admin-only
 const COOKIE = "pp_session", TTL = 60 * 60 * 12; // 12 hours
 const env = (k) => (globalThis.Netlify?.env?.get(k)) ?? (globalThis.process?.env?.[k]);
 const enc = new TextEncoder();

@@ -23,8 +23,16 @@ The public form at `/request` is server-rendered by `netlify-site/netlify/lib/te
 - Tenant tips are simple, safe checks only (photos, notes, plug-in checks). The form never talks a tenant through gas, electrical or plumbing repairs, and a test enforces this.
 - The emergency phone numbers are Western Australian (ATCO Gas, Western Power). Other states need their own before use.
 
+## New tenant requests
+Requests from the tenant form show in a **New from tenants** panel at the top of the Overview and of each PM's workspace. Emergencies come first, then urgent requests, then the oldest. A request stays in the list until someone confirms triage, so it can't drop off just because someone opened it. The Overview link in the sidebar shows a count (orange when one is an emergency), the browser tab shows the count, and Matt mentions them. A PM sees their own requests plus their office's shared queue. No database change: the urgency comes from the job's `create` step.
+
+## Job screen
+`app/job.html?id=<job id>` shows one job: the next step, a progress tracker (logged, quotes, owner, booked, completed, invoiced, PropertyMe), the tenant's answers and photos with tap-to-call, the quotes against the owner's approval limit, every step with who and when (undone steps struck through), and the emails prepared for the job. Every job reference (`MM-…`) in the portal links to it. PMs can open it (`/job.html` is in `PM_PAGES`); only the job's PM or an admin can take a step.
+
 ## Brand
 Brand tokens, theme, logo and the Matt character live in `design/maintenance-mate/`. The app loads `app/assets/mm-theme.css` on every page. Design previews for screens not built yet are in `design/maintenance-mate/mockups/`.
 
 ## Tests
 `cd netlify-site && npm install && node --test test/*.test.mjs`
+
+`test/portal_ui.test.mjs` drives the staff portal in Chromium with sample data and a mocked API. It's skipped when Playwright isn't installed (`npm install --no-save playwright && npx playwright install chromium`).
