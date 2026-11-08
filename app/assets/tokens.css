@@ -1,23 +1,41 @@
-/* Example Property Co — tokens FINAL · Palette D Midnight & Rose Gold */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap');
+/* Maintenance Mate — design tokens
+   Legacy variable names (--navy-*, --champagne-*, --platinum) are kept so every existing
+   component picks up the new look without a rewrite. Their VALUES are now the Maintenance Mate palette:
+   --navy-* = ink navy, --champagne = Mate orange, --champagne-ink = dark orange (text on light). */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Manrope:wght@400;500;600;700;800&display=swap');
 :root{
-  --navy-950:#0D0E18;--navy-900:#171927;--navy-700:#282C42;--navy-500:#4C5170;--navy-50:#EEF1F5;
-  --platinum:#ECE6EA;--platinum-300:#C9CDD4;--silver-700:#5E5E6D;
-  --ivory:#F7F3F1;--ivory-2:#F2EDE4;--paper:#FFFCFB;--ink:#1A1B26;
-  --champagne:#D4A491;      /* hairlines, dots, focus — decorative or on navy */
-  --champagne-ink:#8A5240;  /* champagne for text on light (5.4:1 on ivory) */
-  --bg:var(--ivory);--surface:rgba(255,252,251,.78);--text:var(--ink);--muted:var(--silver-700);--champagne-bg:#F6E6E0;--glow:#F0DFD8;--bar-bg:rgba(247,243,241,.7);--tabbar-bg:rgba(23,25,39,.88);
-  --grade-a:#2F6B50;--grade-b:#4C5170;--grade-c:#7A5B0C;--grade-d:#9E2626;
-  --hair:rgba(22,27,36,.08);
-  --safe:#2F6B50;--watch:#7A5B0C;--risk:#A4481A;--critical:#9E2626;
-  --safe-bg:#E6F0EA;--watch-bg:#F6EED6;--risk-bg:#F9E7DC;--critical-bg:#F7E1E1;
-  --font-display:'Cormorant Garamond',Georgia,serif;--font-ui:'Inter',system-ui,sans-serif;
+  /* brand palette */
+  --mm-navy:#0F1B3D;--mm-navy-2:#1B2B5E;--mm-navy-deep:#0A1230;
+  --mm-orange:#FF6B3D;--mm-teal:#19C3A8;--mm-yellow:#FFC93C;--mm-sky:#8FD3FF;
+  --mm-orange-tint:#FFE3D6;--mm-teal-tint:#D3F6EF;--mm-sky-tint:#DCEEFF;--mm-yellow-tint:#FFF1C9;
+  --mm-ground:#EEF1FA;--mm-line:#CBD3EC;--mm-line-2:#E3E8F5;--mm-muted:#3D4A73;
+
+  /* legacy names, new values */
+  --navy-950:#0A1230;--navy-900:#0F1B3D;--navy-700:#1B2B5E;--navy-500:#3D4A73;--navy-50:#E3E8F5;
+  --platinum:#E3E8F5;--platinum-300:#C9D3F2;--silver-700:#3D4A73;
+  --ivory:#EEF1FA;--ivory-2:#E3E8F5;--paper:#FFFFFF;--ink:#0F1B3D;
+  --champagne:#FF6B3D;       /* Mate orange: buttons, dots, focus, accents. Never as text on light. */
+  --champagne-ink:#A83A12;   /* dark orange: text and links on light (5.6:1 on the page colour) */
+  --champagne-bg:#FFE3D6;    /* merge fields */
+  --bg:var(--mm-ground);--surface:#FFFFFF;--text:var(--ink);--muted:var(--mm-muted);
+  --glow:transparent;--bar-bg:rgba(238,241,250,.92);--tabbar-bg:#0F1B3D;
+  --hair:rgba(15,27,61,.14);
+
+  /* status: always icon shape + label + colour */
+  --safe:#0B6B5A;--watch:#7A5B0C;--risk:#A83A12;--critical:#B3202A;
+  --safe-bg:#D3F6EF;--watch-bg:#FFF1C9;--risk-bg:#FFE3D6;--critical-bg:#FFE0E0;
+  --grade-a:#0B6B5A;--grade-b:#1B2B5E;--grade-c:#7A5B0C;--grade-d:#B3202A;
+
+  /* type */
+  --font-display:'Bricolage Grotesque',Georgia,serif;--font-ui:'Manrope',system-ui,sans-serif;
   --fs-cap:.75rem;--fs-sm:.9375rem;--fs-md:1.0625rem;--fs-lg:1.25rem;--fs-h3:1.75rem;--fs-h2:2.5rem;--fs-h1:4rem;
-  --lh-display:1.08;--lh-body:1.65;
+  --lh-display:1.04;--lh-body:1.6;
+
+  /* space, radius, depth */
   --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:40px;--s-7:64px;--s-8:96px;--s-9:128px;
-  --r-sm:8px;--r-md:14px;--r-lg:24px;--r-pill:999px;
-  --shadow-soft:0 1px 0 rgba(255,255,255,.7) inset,0 10px 30px -12px rgba(16,29,48,.14);
-  --shadow-lift:0 24px 60px -24px rgba(16,29,48,.28);
-  --blur:saturate(140%) blur(14px);
+  --r-sm:8px;--r-md:14px;--r-lg:20px;--r-pill:999px;
+  --shadow-soft:3px 3px 0 var(--mm-navy);          /* hard offset shadow: the Mate signature */
+  --shadow-lift:5px 5px 0 var(--mm-navy);
+  --blur:none;
   --ease:cubic-bezier(.2,.7,.2,1);
 }

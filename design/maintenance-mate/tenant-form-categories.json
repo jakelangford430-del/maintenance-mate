@@ -1,0 +1,689 @@
+{
+ "note": "Residential maintenance categories for the tenant request form. Each sub-issue is [name, emergency flag, triage hint]. The emergency flag is one of: g gas, e electrical or power lines, w water, s security, x storm, fire or structural. The triage hint is water, power, gas or security, or empty, and feeds the existing job triage. Tips are simple, safe checks in Matt's voice: photos, notes and plug-in checks only. Matt never talks a tenant through gas, electrical or plumbing repairs. Emergency phone numbers shown are Western Australian examples and need a state lookup before use elsewhere.",
+ "categories": [
+  {
+   "k": "plumbing",
+   "l": "Plumbing and water",
+   "subs": [
+    [
+     "Leaking tap",
+     "",
+     "water"
+    ],
+    [
+     "Blocked toilet, sink or drain",
+     "",
+     ""
+    ],
+    [
+     "Toilet keeps running",
+     "",
+     "water"
+    ],
+    [
+     "Low water pressure",
+     "",
+     ""
+    ],
+    [
+     "Leak under a sink or basin",
+     "",
+     "water"
+    ],
+    [
+     "Sewer smell",
+     "",
+     ""
+    ],
+    [
+     "Burst pipe or flooding",
+     "w",
+     ""
+    ]
+   ],
+   "tip": "Take a photo of where the water is coming from, and tell me how fast it's going.",
+   "tips": [
+    "Take a photo of the leak and the pipe. It helps the plumber bring the right parts.",
+    "Avoid chemical drain cleaners. They can damage old pipes.",
+    "Tell me when it started and whether it's getting worse."
+   ]
+  },
+  {
+   "k": "hotwater",
+   "l": "Hot water",
+   "subs": [
+    [
+     "No hot water",
+     "",
+     ""
+    ],
+    [
+     "Water not hot enough",
+     "",
+     ""
+    ],
+    [
+     "Hot water unit leaking",
+     "",
+     "water"
+    ],
+    [
+     "Noisy or dripping relief valve",
+     "",
+     ""
+    ],
+    [
+     "Gas hot water not lighting",
+     "",
+     ""
+    ],
+    [
+     "Solar or heat pump fault",
+     "",
+     ""
+    ]
+   ],
+   "tip": "Tell me whether any tap gives hot water, and take a photo of the unit and its label.",
+   "tips": [
+    "Tell me if there's no hot water anywhere or only at some taps.",
+    "Photograph the unit, its label and any display.",
+    "If the tank itself is leaking, tell me straight away."
+   ]
+  },
+  {
+   "k": "electrical",
+   "l": "Electrical",
+   "subs": [
+    [
+     "Power out in part of the home",
+     "",
+     "power"
+    ],
+    [
+     "Safety switch keeps tripping",
+     "",
+     "power"
+    ],
+    [
+     "Power point or switch not working",
+     "",
+     ""
+    ],
+    [
+     "Light or fan not working",
+     "",
+     ""
+    ],
+    [
+     "Outdoor or garage lights",
+     "",
+     ""
+    ],
+    [
+     "Sparking, burning smell or shock",
+     "e",
+     ""
+    ]
+   ],
+   "tip": "Tell me which lights or power points aren't working and when it started.",
+   "tips": [
+    "Tell me what stopped working and when.",
+    "Leave any faulty appliance unplugged until it's been checked.",
+    "Never open panels or touch exposed wiring."
+   ]
+  },
+  {
+   "k": "gas",
+   "l": "Gas",
+   "subs": [
+    [
+     "Gas smell",
+     "g",
+     ""
+    ],
+    [
+     "Cooktop or oven won't light",
+     "",
+     ""
+    ],
+    [
+     "Gas heater not working",
+     "",
+     ""
+    ],
+    [
+     "Loose gas hose or bayonet",
+     "",
+     ""
+    ]
+   ],
+   "tip": "Don't use gas appliances if you suspect a leak, and don't try to fix gas fittings yourself.",
+   "tips": [
+    "Don't use gas appliances if you suspect a leak.",
+    "Don't try to repair gas fittings.",
+    "Tell me the brand of the appliance and what it does when you try it."
+   ]
+  },
+  {
+   "k": "appliances",
+   "l": "Appliances",
+   "subs": [
+    [
+     "Oven or cooktop",
+     "",
+     ""
+    ],
+    [
+     "Rangehood",
+     "",
+     ""
+    ],
+    [
+     "Dishwasher",
+     "",
+     ""
+    ],
+    [
+     "Fridge or freezer (if supplied)",
+     "",
+     ""
+    ],
+    [
+     "Washer or dryer (if supplied)",
+     "",
+     ""
+    ],
+    [
+     "Built-in microwave",
+     "",
+     ""
+    ]
+   ],
+   "tip": "Check it's plugged in and the wall switch is on, then tell me the brand and what it does.",
+   "tips": [
+    "Check it's plugged in and the switch at the wall is on.",
+    "Note the brand and any error code shown on the display.",
+    "If it smells burnt, stop using it and tell me."
+   ]
+  },
+  {
+   "k": "cooling",
+   "l": "Heating, cooling and fans",
+   "subs": [
+    [
+     "Air con not cooling or heating",
+     "",
+     ""
+    ],
+    [
+     "Air con leaking",
+     "",
+     ""
+    ],
+    [
+     "Ducted system fault",
+     "",
+     ""
+    ],
+    [
+     "Wall or space heater",
+     "",
+     ""
+    ],
+    [
+     "Exhaust fan not working",
+     "",
+     ""
+    ]
+   ],
+   "tip": "Try fresh batteries in the remote and check the filter is clean before I send someone.",
+   "tips": [
+    "Try fresh batteries in the remote.",
+    "Check the filter is clean.",
+    "Note any error code or flashing light."
+   ]
+  },
+  {
+   "k": "roof",
+   "l": "Roof, gutters and ceilings",
+   "subs": [
+    [
+     "Roof leak",
+     "",
+     "water"
+    ],
+    [
+     "Gutter blocked or hanging",
+     "",
+     ""
+    ],
+    [
+     "Ceiling stain",
+     "",
+     ""
+    ],
+    [
+     "Damp or mould on the ceiling",
+     "",
+     ""
+    ],
+    [
+     "Loose roof tiles or sheeting",
+     "",
+     ""
+    ],
+    [
+     "Ceiling sagging or bulging with water",
+     "x",
+     ""
+    ]
+   ],
+   "tip": "Put a bucket under any drip and move things out of the way. Photos taken while it's raining help a lot.",
+   "tips": [
+    "Put a bucket under the drip and move belongings away.",
+    "Take photos while it's raining, if it's safe.",
+    "Keep clear of any ceiling that's bulging."
+   ]
+  },
+  {
+   "k": "walls",
+   "l": "Walls, floors and paint",
+   "subs": [
+    [
+     "Cracks in walls or ceiling",
+     "",
+     ""
+    ],
+    [
+     "Peeling or marked paint",
+     "",
+     ""
+    ],
+    [
+     "Damaged plaster",
+     "",
+     ""
+    ],
+    [
+     "Carpet or flooring damage",
+     "",
+     ""
+    ],
+    [
+     "Cracked or loose tiles",
+     "",
+     ""
+    ],
+    [
+     "Skirting or cornice damage",
+     "",
+     ""
+    ]
+   ],
+   "tip": "Take a photo with a coin or tape measure for scale. Tell me if a crack is getting bigger.",
+   "tips": [
+    "Photograph it with a coin or tape measure for scale.",
+    "Tell me if a crack is getting wider.",
+    "Note any water stains nearby."
+   ]
+  },
+  {
+   "k": "doors",
+   "l": "Doors, windows and locks",
+   "subs": [
+    [
+     "Door won't close or lock",
+     "",
+     "security"
+    ],
+    [
+     "Locked out or lost keys",
+     "",
+     "security"
+    ],
+    [
+     "Window won't open, close or latch",
+     "",
+     ""
+    ],
+    [
+     "Cracked or broken glass",
+     "",
+     ""
+    ],
+    [
+     "Flyscreen or security screen",
+     "",
+     ""
+    ],
+    [
+     "Sliding door stuck",
+     "",
+     ""
+    ],
+    [
+     "Garage door or remote",
+     "",
+     ""
+    ]
+   ],
+   "tip": "Please don't force a stuck lock. It usually makes it harder and dearer to fix.",
+   "tips": [
+    "Don't force a stuck lock.",
+    "If glass is broken, cover it and keep kids and pets away.",
+    "For a garage door, tell me whether the remote or the wall button still works."
+   ]
+  },
+  {
+   "k": "security",
+   "l": "Security and safety",
+   "subs": [
+    [
+     "Break-in or forced entry",
+     "s",
+     ""
+    ],
+    [
+     "Broken or missing lock",
+     "",
+     "security"
+    ],
+    [
+     "Smoke alarm beeping or faulty",
+     "",
+     ""
+    ],
+    [
+     "Fence or gate unsafe",
+     "",
+     ""
+    ],
+    [
+     "Pool gate not latching",
+     "",
+     ""
+    ],
+    [
+     "Security alarm fault",
+     "",
+     ""
+    ]
+   ],
+   "tip": "A smoke alarm beeping every minute or so is usually a flat battery or an alarm at the end of its life.",
+   "tips": [
+    "A beep every minute or so usually means a flat battery or an old alarm.",
+    "A pool gate that won't latch is a safety risk. Tell me straight away.",
+    "If you feel unsafe at any point, call 000."
+   ]
+  },
+  {
+   "k": "wet",
+   "l": "Bathroom, kitchen and laundry",
+   "subs": [
+    [
+     "Shower or bath leaking",
+     "",
+     "water"
+    ],
+    [
+     "Cracked grout or silicone",
+     "",
+     ""
+    ],
+    [
+     "Cabinet door or drawer",
+     "",
+     ""
+    ],
+    [
+     "Benchtop damage",
+     "",
+     ""
+    ],
+    [
+     "Vanity or basin damage",
+     "",
+     ""
+    ],
+    [
+     "Shower screen or glass",
+     "",
+     ""
+    ]
+   ],
+   "tip": "If water is getting through the wall or floor, stop using the shower and tell me.",
+   "tips": [
+    "Stop using it if water is getting through the wall or floor.",
+    "Photograph any water marks on the other side of the wall.",
+    "Note when you first noticed it."
+   ]
+  },
+  {
+   "k": "pests",
+   "l": "Pests and mould",
+   "subs": [
+    [
+     "Cockroaches or ants",
+     "",
+     ""
+    ],
+    [
+     "Rats or mice",
+     "",
+     ""
+    ],
+    [
+     "Termites or white ants",
+     "",
+     ""
+    ],
+    [
+     "Wasps, bees or spiders",
+     "",
+     ""
+    ],
+    [
+     "Possums or birds in the roof",
+     "",
+     ""
+    ],
+    [
+     "Mould or damp",
+     "",
+     ""
+    ]
+   ],
+   "tip": "Tell me what you've seen, where and when. If you think it's termites, don't disturb the area. Take a photo instead.",
+   "tips": [
+    "Tell me what you've seen, where and when.",
+    "If you think it's termites, don't disturb the area. Take a photo.",
+    "For mould, keep the room ventilated and only wipe small patches."
+   ]
+  },
+  {
+   "k": "garden",
+   "l": "Garden, fences and outdoors",
+   "subs": [
+    [
+     "Fence or gate damage",
+     "",
+     ""
+    ],
+    [
+     "Deck, pergola or steps",
+     "",
+     ""
+    ],
+    [
+     "Retaining wall",
+     "",
+     ""
+    ],
+    [
+     "Clothesline or letterbox",
+     "",
+     ""
+    ],
+    [
+     "Irrigation or reticulation",
+     "",
+     ""
+    ],
+    [
+     "Paths or driveway",
+     "",
+     ""
+    ],
+    [
+     "Tree or large branch about to fall",
+     "x",
+     ""
+    ]
+   ],
+   "tip": "Check your lease for garden responsibilities. For anything dangerous, keep well clear and tell me.",
+   "tips": [
+    "Check your lease for who looks after the garden.",
+    "Keep well clear of any tree near power lines.",
+    "Photos from a safe distance help."
+   ]
+  },
+  {
+   "k": "pool",
+   "l": "Pool and spa",
+   "subs": [
+    [
+     "Pump or filter not working",
+     "",
+     ""
+    ],
+    [
+     "Green or cloudy water",
+     "",
+     ""
+    ],
+    [
+     "Losing water",
+     "",
+     "water"
+    ],
+    [
+     "Heater fault",
+     "",
+     ""
+    ],
+    [
+     "Fence or gate fault",
+     "",
+     ""
+    ],
+    [
+     "Cover or equipment damage",
+     "",
+     ""
+    ]
+   ],
+   "tip": "Tell me when you last saw the pool working normally. Please don't swim if the water is green.",
+   "tips": [
+    "Tell me when it last worked normally.",
+    "Don't swim if the water is green or the pump has been off for days.",
+    "Any gap in the fence or a faulty gate latch is a safety risk. Tell me straight away."
+   ]
+  },
+  {
+   "k": "storm",
+   "l": "Storm, fire and flood damage",
+   "subs": [
+    [
+     "Storm damage",
+     "x",
+     ""
+    ],
+    [
+     "Flooding",
+     "w",
+     ""
+    ],
+    [
+     "Fire or smoke damage",
+     "x",
+     ""
+    ],
+    [
+     "Tree down",
+     "x",
+     ""
+    ],
+    [
+     "Power lines down",
+     "e",
+     ""
+    ]
+   ],
+   "tip": "If anyone is in danger, call 000 first.",
+   "tips": [
+    "If anyone is in danger call 000 first.",
+    "Stay well away from fallen power lines.",
+    "SES can help with storm and flood damage on 132 500."
+   ]
+  },
+  {
+   "k": "solar",
+   "l": "Solar, tanks and other",
+   "subs": [
+    [
+     "Solar panels or inverter fault",
+     "",
+     ""
+    ],
+    [
+     "Rainwater tank",
+     "",
+     ""
+    ],
+    [
+     "Septic system",
+     "",
+     ""
+    ],
+    [
+     "Internet or TV point",
+     "",
+     ""
+    ],
+    [
+     "Something else",
+     "",
+     ""
+    ]
+   ],
+   "tip": "Note any error lights or codes on the inverter and take a photo of the display.",
+   "tips": [
+    "Note any error lights or codes.",
+    "Take a photo of the display.",
+    "Tell me when it last worked normally."
+   ]
+  }
+ ],
+ "emergency": {
+  "g": [
+   "Gas smell",
+   "Open doors and windows if it's safe, then leave the building and stay out. Call the gas faults line (WA: ATCO Gas 13 13 52). If anyone is unwell or in danger, call 000."
+  ],
+  "e": [
+   "Sparking, burning smell or power lines",
+   "Stay clear and don't touch anything. Call the network faults line (WA: Western Power 13 13 51), or 000 if there's fire or an injury."
+  ],
+  "w": [
+   "Burst pipe or flooding",
+   "Move belongings out of the way and stay clear of power points and appliances near water. Tell me straight away so I can get a plumber moving."
+  ],
+  "s": [
+   "Break-in",
+   "If you don't feel safe, call 000. Please don't touch anything until police have attended."
+  ],
+  "x": [
+   "This sounds urgent",
+   "If anyone is in danger, call 000 first. For storm or flood help, call the SES on 132 500. Stay well away from power lines and unsafe ceilings or trees."
+  ]
+ }
+}

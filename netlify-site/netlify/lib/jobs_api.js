@@ -3,6 +3,7 @@
 import { JOBS, ADDR, SUBURB_OFFICE, AS_OF, norm } from "./jobs_index.js";
 import { PEOPLE } from "./people.js";
 import { getStore } from "@netlify/blobs";
+import { parseSubmission, buildJob, renderForm, renderThanks, TENANT_FORM_CSS } from "./tenant_form.js";
 
 const OFFICE_OF = Object.fromEntries(PEOPLE.map((p) => [p.name, p.office]));
 const TAPI_STAGE = { "Repair request": "new", "Accept tenant request": "new", "Choose action": "new", "Awaiting quote": "quoting", "Review quote": "quoting",
@@ -223,50 +224,41 @@ export function makeJobs({ db, json, pmName, env, inc }) {
   // ---- Public tenant request form (/request), only when PORTAL_PUBLIC_REQUEST=on ----
   const REQ_WIN = 60 * 60 * 1000, REQ_IP_MAX = 5, REQ_ALL_MAX = 60;
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
-  const SAFE = `<div class="em"><b>Emergency?</b> If anyone is in danger call <b>000</b>. Gas smell: turn the gas off at the meter if safe and call ATCO Gas faults on <b>13 13 52</b>. Power out or sparking: stay clear and call Western Power on <b>13 13 51</b>. Burst pipe: turn the water off at the mains. Then send this form so we can arrange a contractor.</div>`;
+  const SAFE = `<div class="em"><b>Emergency?</b> If anyone is in danger call <b>000</b>. Gas smell: leave the building and call ATCO Gas faults on <b>13 13 52</b>. Power out or sparking: stay clear and call Western Power on <b>13 13 51</b>. Burst pipe or flooding: stay clear of power points and appliances near water. Then send this form so we can arrange a contractor.</div>`;
+  const MM_LOGO = `<svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#FFC93C"/><path d="M24 9L40 22V37H8V22Z" fill="#0F1B3D" stroke="#0F1B3D" stroke-width="5" stroke-linejoin="round"/><g transform="translate(12 15)" fill="none" stroke="#FFC93C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></g></svg>`;
+  const MM_MATT = `<svg viewBox="0 0 200 200" role="img" aria-label="Matt, the Maintenance Mate AI"><path d="M34 200v-16c0-13 10-22 23-22h86c13 0 23 9 23 22v16z" fill="#8FD3FF"/><rect x="68" y="160" width="14" height="40" fill="#FF6B3D"/><rect x="118" y="160" width="14" height="40" fill="#FF6B3D"/><rect x="12" y="108" width="24" height="46" rx="12" fill="#FF6B3D"/><rect x="164" y="108" width="24" height="46" rx="12" fill="#FF6B3D"/><rect x="30" y="74" width="140" height="100" rx="46" fill="#FFC93C"/><rect x="50" y="96" width="100" height="62" rx="29" fill="#0F1B3D"/><circle cx="78" cy="123" r="10" fill="#19C3A8"/><circle cx="122" cy="123" r="10" fill="#19C3A8"/><path d="M82 141 Q100 155 118 141" fill="none" stroke="#19C3A8" stroke-width="7" stroke-linecap="round"/><path d="M30 86C30 44 62 20 100 20s70 24 70 66z" fill="#FF6B3D"/><rect x="15" y="80" width="170" height="17" rx="8.5" fill="#FF6B3D"/><rect x="15" y="90" width="170" height="7" rx="3.5" fill="#E0501F"/><circle cx="100" cy="52" r="19" fill="#0F1B3D"/><g transform="translate(85 37) scale(1.25)" fill="none" stroke="#FFC93C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></g></svg>`;
   const shell = (inner, status = 200) => new Response(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Report a repair · Maintenance Mate</title>
-<style>*{box-sizing:border-box}body{margin:0;background:#F7F3F1;font:16px/1.5 Inter,system-ui,sans-serif;color:#1A1B26}main{max-width:560px;margin:0 auto;padding:28px 18px 60px}
-h1{font:400 2rem Georgia,serif;margin:6px 0 8px}.cap{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A5240}form{display:grid;gap:16px;background:#FFFCFB;padding:22px;border-radius:18px;box-shadow:0 12px 34px rgba(23,25,39,.08)}
-label{display:grid;gap:6px;font-size:14px;font-weight:500}input,textarea{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;font:inherit;background:#fff}fieldset{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
-legend{font-size:14px;font-weight:500;margin-bottom:6px}.ck{display:inline-flex;align-items:center;gap:8px;border:1px solid #ddd;border-radius:999px;padding:8px 14px;font-weight:400;background:#fff}.ck input{width:auto}
-button{padding:14px;border:0;border-radius:999px;background:#171927;color:#fff;font:inherit;cursor:pointer}.muted{color:#6b6b76;font-size:14px}.em{background:#FBEDEA;border-radius:12px;padding:14px 16px;font-size:14px;margin:14px 0}
-.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}.e{color:#9E2626;font-size:14px}</style></head><body><main>${inner}</main></body></html>`,
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Manrope:wght@400;500;600;700;800&display=swap"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width="48" height="48" rx="14" fill="%23FFC93C"/%3E%3Cpath d="M24 9L40 22V37H8V22Z" fill="%230F1B3D" stroke="%230F1B3D" stroke-width="5" stroke-linejoin="round"/%3E%3Cg transform="translate(12 15)" fill="none" stroke="%23FFC93C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/%3E%3C/g%3E%3C/svg%3E"><meta name="theme-color" content="#0F1B3D"><style>*{box-sizing:border-box}body{margin:0;background:#EEF1FA;font:16px/1.5 Manrope,system-ui,sans-serif;color:#0F1B3D}main{max-width:560px;margin:0 auto;padding:28px 18px 60px}
+h1{font:800 2.2rem/1.08 'Bricolage Grotesque',Georgia,serif;letter-spacing:-.025em;margin:10px 0 10px;color:#0F1B3D}.cap{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:#0F1B3D}form{display:grid;gap:16px;background:#fff;padding:22px;border:2px solid #0F1B3D;border-radius:20px;box-shadow:5px 5px 0 #0F1B3D}
+label{display:grid;gap:6px;font-size:14px;font-weight:700}input,textarea{width:100%;padding:12px 14px;border:2px solid #0F1B3D;border-radius:12px;font:inherit;background:#fff}fieldset{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+legend{font-size:14px;font-weight:800;margin-bottom:6px}.ck{display:inline-flex;align-items:center;gap:8px;border:2px solid #0F1B3D;border-radius:999px;padding:8px 14px;font-weight:600;background:#fff}.ck input{width:auto}
+button{padding:14px;border:2px solid #0F1B3D;border-radius:14px;background:#FF6B3D;color:#0F1B3D;font:inherit;font-weight:800;cursor:pointer;box-shadow:3px 3px 0 #0F1B3D}.muted{color:#3D4A73;font-size:14px}.em{background:#FFE3D6;border:2px solid #0F1B3D;border-radius:14px;padding:14px 16px;font-size:14px;margin:14px 0}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}.e{color:#B3202A;font-size:14px;font-weight:700}input:focus,textarea:focus,select:focus,button:focus-visible{outline:3px solid #FF6B3D;outline-offset:2px}button:active{transform:translate(3px,3px);box-shadow:none!important}.cap svg{width:26px;height:26px;flex:none}.mt{display:flex;align-items:center;gap:12px;margin:14px 0 6px}.mt svg{width:64px;height:64px;flex:none}.mt p{margin:0;background:#fff;border:2px solid #0F1B3D;border-radius:16px;padding:10px 14px;font-weight:700;font-size:15px;line-height:1.4;box-shadow:3px 3px 0 #FFC93C}.pw{margin:22px 0 0;font-size:13px;font-weight:700;color:#3D4A73;text-align:center}${TENANT_FORM_CSS}</style></head><body><main>${inner}<p class="pw">Powered by Maintenance Mate</p></main></body></html>`,
     { status, headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store", "x-robots-tag": "noindex" } });
-  const form = (msg = "", v = {}) => shell(`<div class="cap">Maintenance Mate</div><h1>Report a repair</h1><p class="muted">Tell us what needs fixing at your rental. Your property manager will be in touch. This form does not show any property or account details.</p>${SAFE}
-<form method="post" action="/request" enctype="multipart/form-data">${msg ? `<p class="e" role="alert">${esc(msg)}</p>` : ""}
-<label>Property address<input name="address" required maxlength="200" autocomplete="street-address" placeholder="e.g. 12 Example St, Mandurah" value="${esc(v.address)}"></label>
-<label>Your name<input name="tenant_name" required maxlength="120" autocomplete="name" value="${esc(v.tenant_name)}"></label>
-<label>Phone or email<input name="tenant_contact" required maxlength="160" value="${esc(v.tenant_contact)}"></label>
-<label>What's wrong?<textarea name="description" required rows="4" maxlength="2000">${esc(v.description)}</textarea></label>
-<label>Where in the property?<input name="location" maxlength="120" placeholder="e.g. Kitchen, main bathroom" value="${esc(v.location)}"></label>
-<fieldset><legend>Is any of this involved?</legend>${HINTS.map((h) => `<label class="ck"><input type="checkbox" name="hints" value="${h}"> ${{ water: "Water leak", power: "No power", gas: "Gas", security: "Can't lock / security" }[h]}</label>`).join("")}</fieldset>
-<label>Photos (optional, up to 3)<input type="file" name="photos" accept="image/*" multiple></label>
-<div class="hp" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label></div>
-<button>Send request</button><p class="muted">Sending this does not email anyone automatically. It goes to the property management team.</p></form>`);
+  const form = (msg = "", v = {}, errs = []) => shell(renderForm({ esc, MM_LOGO, MM_MATT, SAFE, msg, errs, v }));
   async function requestPage(req, context) {
     if (req.method === "GET") return form();
     if (req.method !== "POST") return new Response("method", { status: 405 });
     const raw = String(context?.ip || "unknown"), ip = raw.includes(":") ? raw.toLowerCase().split(":").slice(0, 3).join(":") + "::/48" : raw, bucket = Math.floor(Date.now() / REQ_WIN);
     let f; try { f = await req.formData(); } catch { return form("Something went wrong reading the form. Try again."); }
-    const v = Object.fromEntries(["address", "tenant_name", "tenant_contact", "description", "location", "website"].map((k) => [k, t(f.get(k), k === "description" ? 2000 : 200)]));
-    const ok = shell(`<div class="cap">Maintenance Mate</div><h1>Thanks, we've got it</h1><p>Your repair request has been sent to the property management team. They'll contact you to arrange the next step.</p>${SAFE}`);
-    if (v.website) return ok; // honeypot: pretend success, store nothing
+    const { v, errs } = parseSubmission(f, t);
+    if (v.website) return shell(renderThanks({ esc, MM_LOGO, MM_MATT, SAFE, wo: null, flag: "" })); // honeypot: pretend success, store nothing
     try {
       if ((await inc(`req:ip:${ip}`, bucket)) > REQ_IP_MAX || (await inc("req:global", bucket)) > REQ_ALL_MAX)
         return shell(`<h1>Too many requests</h1><p>Please try again in an hour, or call your property manager.</p>`, 429);
     } catch { return shell(`<h1>Form unavailable</h1><p>Please try again later or call your property manager.</p>`, 503); }
-    if (!v.address || !v.tenant_name || !v.tenant_contact || !v.description) return form("Please fill in the address, your name, a phone or email, and what's wrong.", v);
-    const hints = f.getAll("hints").map(String).filter((h) => HINTS.includes(h)), photos = [];
+    if (errs.length) return form("", v, errs);
+    const photos = [];
     try {
       for (const p of f.getAll("photos").slice(0, 3)) {
         if (!p || typeof p === "string" || !p.size) continue; const type = p.type || "";
         if (!IMG[type] || p.size > MAXB) continue; const key = `intake/${crypto.randomUUID()}`;
         await blobs().set(key, await p.arrayBuffer(), { metadata: { type, by: "tenant_form", at: now() } }); photos.push(key);
       }
-      const title = v.description.split(/[.\n]/)[0].slice(0, 100);
-      const { r, rt } = await createNative({ ...v, title, hints, photos }, "Tenant request form", "tenant_form");
-      await db().sql`INSERT INTO job_step (job_id, action, detail, actor) VALUES (${r.job_id}, 'create', ${JSON.stringify({ routed: rt.matched, pm: r.pm, office: r.office, origin: "tenant_form" })}, 'Tenant request form')`;
-      return shell(`<div class="cap">Maintenance Mate</div><h1>Thanks, we've got it</h1><p>Your reference is <b>${esc(r.wo)}</b>. Your repair request has been sent to the property management team. They'll contact you to arrange the next step.</p>${SAFE}`);
+      const job = buildJob(v), hints = job.hints.filter((h) => HINTS.includes(h));
+      const { r, rt } = await createNative({ address: job.address, tenant_name: job.tenant_name, tenant_contact: job.tenant_contact, description: job.description, location: job.location, title: job.title, hints, photos }, "Tenant request form", "tenant_form");
+      await db().sql`INSERT INTO job_step (job_id, action, detail, actor) VALUES (${r.job_id}, 'create', ${JSON.stringify({ routed: rt.matched, pm: r.pm, office: r.office, origin: "tenant_form", urgency: job.urgency, type: v.cat })}, 'Tenant request form')`;
+      return shell(renderThanks({ esc, MM_LOGO, MM_MATT, SAFE, wo: r.wo, flag: job.flag }));
     } catch (e) { console.error("request form error", e?.message); return shell(`<h1>Form unavailable</h1><p>Your request was not saved. Please try again later or call your property manager.</p>`, 503); }
   }
   return { jobsApi, photoApi, requestPage, load, canAct };
